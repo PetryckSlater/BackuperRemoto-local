@@ -2,13 +2,13 @@
 
 #!/bin/bash
 	echo "---------------------------------------------------"
-	echo "digite a pasta que deseja fazer o backup: "
+	echo "Aguardando... "
 	loca="/Documentos"
 	echo "---------------------------------------------------"
-	echo "ele se localiza na pasta [ $loca ] "
+	echo "A pasta sera [ $loca ] "
 	#Ip
 	echo "---------------------------------------------------"
-	echo "Digite seu ip: "
+	echo "O ip: "
 	ipp=$(hostname -I)
 	ping -c 1 $ipp
 	echo "O ip selecionado foi: $ipp"
@@ -23,7 +23,7 @@
 
 	#user
 	echo "---------------------------------------------------"
-	echo "digite seu usuario: "
+	echo "nome do usuario: "
 	user="ifpb"
 	echo "usuario $user configurado..."
 	nome=$user$ipp
