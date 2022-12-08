@@ -3,13 +3,13 @@
 #!/bin/bash
 	echo "---------------------------------------------------"
 	echo "Aguardando... "
-	loca="/Documentos"
+	loca="/home/Documentos"
 	echo "---------------------------------------------------"
 	echo "A pasta sera [ $loca ] "
 	#Ip
 	echo "---------------------------------------------------"
 	echo "O ip: "
-	ipp=$(hostname -I)
+	ipp="192.168.1.12"
 	ping -c 1 $ipp
 	echo "O ip selecionado foi: $ipp"
 	echo "---------------------------------------------------"
@@ -24,7 +24,7 @@
 	#user
 	echo "---------------------------------------------------"
 	echo "nome do usuario: "
-	user="ifpb"
+	user="aluno"
 	echo "usuario $user configurado..."
 	nome=$user$ipp
 	mkdir $user$ipp
@@ -33,23 +33,19 @@
 	#definidor
 	echo "---------------------------------------------------"
 	echo "Arquivo Configs criadas"
-	echo "$user $pass $ipp save_backup/$loca" >> config/configs.txt
+	echo "$user $ipp save_backup/$loca" >> config/configs.txt
 	arb=$(pwd)
 	echo "---------------------------------------------------"
 
 	#Enviar as paginas
 	echo "A pasta remota sera: $arb "
-	scp -r $user@$ipp:$loca $arb/$nome
+	sshpass -p "ifpb" scp -r $user@$ipp:$loca $arb/$nome
 	echo "$arb/$nome"
 	date_format=$(date "+%d-%m-%Y")
 	arquivo_final=$user-$date_format
 
 	#comprimidor
 	echo "comprimindo..." 
-	echo "-"
-	echo "--"
-	echo "---"
-	echo "----"
 	tar -cvzf $arquivo_final.tgz $nome
 	mv $arquivo_final.tgz save_backup
 	echo "---------------------------------------------------"
