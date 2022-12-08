@@ -1,37 +1,31 @@
   #!/bin/bash
   
   echo "---------------------------------------------------"
-	echo -e "Instalação? Caso deseje instalar as pastas digite 4 caso não escolha entre: \n1)Cria a pasta config \n2)Cria a pasta save_backup \n3)Arquivo log criado "
+	echo -e "Instalação? Caso deseje instalar as pastas digite 4 caso não escolha entre: \n1)Cria a pasta config \n2)Cria a pasta save_backup \n3)Arquivo log criado \n4) criar Pastas padrão \n5) instalar ssh e dependecias(Executar em modo ROOT)"
 	echo "---------------------------------------------------"
 	read b_o
 	#Criar o config
 	if [ $b_o -eq 1 ]; then
 	echo "Arquivo sendo removido residual..."
 	rm -rf config
-	sleep 3
 	echo "Arquivo config esta sendo criado..."
 	mkdir config
 	echo "Arquivo restaurado com sucessor"
-	sleep 3
 	#criar save_backup
 	elif [ $b_o -eq 2 ]
 	then
 	echo "Arquivo sendo removido residual..."
 	rm -rf save_backup
-	sleep 3
 	mkdir save_backup
 	echo "Arquivo save_backup esta sendo criado..."
-	sleep 3
 	echo "Arquivo restaurado com sucessor"
 	#criar log
 	elif [ $b_o -eq 3 ]
 	then
 	echo "Arquivo sendo removido residual..."
 	rm -f log.txt
-	sleep 3
 	touch log.txt
 	echo "Arquivo log esta sendo criado..."
-	sleep 3
 	echo "Arquivo Criado com sucessor"
 	#Instalador das pastas
 	elif [ $b_o -eq 4 ]
@@ -46,6 +40,15 @@
 	mv config.txt config
 	echo "Arquivo log.txt criado"
 	touch log.txt
+	elif [ $b_o -eq 5 ]
+	then
+	echo " Instalação do SSH e dependencias"
+	echo "Execute em modo Root!"
+	apt install openssh-server
+	apt install openssh-client
+	systemctl start sshd
+	echo "executado com sucesso!"
+	
 	#sair
 	else 
 	return 0
