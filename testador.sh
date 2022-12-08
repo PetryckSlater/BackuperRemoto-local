@@ -3,7 +3,7 @@
 function testertime {
 	for i in  {1..50}; do
 		timesgosto=$(time ./index.sh | grep time)
-		echo "$timesgosto" > infos.txt	
+		echo "$timesgosto" >> infos.txt	
 done
 }
 

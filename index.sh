@@ -9,7 +9,7 @@
 	#Ip
 	echo "---------------------------------------------------"
 	echo "O ip: "
-	ipp="192.168.1.12"
+	ipp="192.168.1.22"
 	ping -c 1 $ipp
 	echo "O ip selecionado foi: $ipp"
 	echo "---------------------------------------------------"
@@ -24,7 +24,7 @@
 	#user
 	echo "---------------------------------------------------"
 	echo "nome do usuario: "
-	user="aluno"
+	user="kali"
 	echo "usuario $user configurado..."
 	nome=$user$ipp
 	mkdir $user$ipp
@@ -33,13 +33,14 @@
 	#definidor
 	echo "---------------------------------------------------"
 	echo "Arquivo Configs criadas"
-	echo "$user $ipp save_backup/$loca" >> config/configs.txt
+	echo "$user $ipp save_backup/$loca" >> configs.txt
+	mv configs.txt config
 	arb=$(pwd)
 	echo "---------------------------------------------------"
 
 	#Enviar as paginas
 	echo "A pasta remota sera: $arb "
-	sshpass -p "ifpb" scp -r $user@$ipp:$loca $arb/$nome
+	sshpass -p "kali" scp -r $user@$ipp:$loca $arb/$nome
 	echo "$arb/$nome"
 	date_format=$(date "+%d-%m-%Y")
 	arquivo_final=$user-$date_format
