@@ -8,9 +8,8 @@ done
 }
 
 function testememoria {
-	for i in {1..50}; do
-		usr  ./index.sh | grep usr
-	done
+	lscpu
+
 }
 echo "Digite 1 para testar o timer ou 2 para o de memoria"
 read inf
