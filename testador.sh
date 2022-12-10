@@ -7,18 +7,19 @@ function testertime {
 done
 }
 
-function testememoria {
+function mostrarCPU {
 	lscpu
-
 }
-echo "Digite 1 para testar o timer ou 2 para o de memoria"
+echo "------------------------------------------------------------------"
+echo "Digite 1 para testar o timer ou 2 para mostrar informações da CPU."
+echo "------------------------------------------------------------------"
 read inf
 case $inf in
 	"1")
 		testertime
 		;;
 	"2")
-		testememoria
+		mostrarCPU
 		;;
 esac
 
